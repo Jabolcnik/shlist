@@ -3,7 +3,7 @@
 use CodeIgniter\Controller;
 use App\Models\UserModel;
 
-class UserController extends Controller
+class UserController extends AuthController
 {
     public function index($id)
     {
@@ -33,8 +33,7 @@ class UserController extends Controller
         $user = $model->where('username', $username)->first();
 
         // If user exists and passwords match
-        // if ($user && password_verify($password, $user['password']))
-        if ($user && $password === $user['password'])
+        if ($user && password_verify($password, $user['password']))
         {
             // Store user ID in session
             $session->set('user_id', $user['id']);
@@ -52,7 +51,8 @@ class UserController extends Controller
     }
 
     public function logout()
-    {    session()->remove('isLoggedIn');
-        return redirect()->to('/login');
+    {    
+      session()->remove('isLoggedIn');
+      return redirect()->to('/login');
     }
 }

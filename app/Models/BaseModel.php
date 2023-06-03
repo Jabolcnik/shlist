@@ -7,9 +7,9 @@ class BaseModel extends Model
     protected $useSoftDeletes = true;
 
     protected $useTimestamps = true;
-    protected $createdField  = 'createdon';
-    protected $updatedField  = 'modifiedon';
-    protected $deletedField  = 'deletedon';
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
+    protected $deletedField  = 'deleted_at';
 
     protected $returnType = 'array';
 }
