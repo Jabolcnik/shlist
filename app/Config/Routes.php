@@ -38,15 +38,28 @@ $routes->get('/login', 'AuthController::showLoginForm');
 $routes->post('/auth/login', 'UserController::login');
 $routes->get('/logout', 'UserController::logout');
 
-$routes->get('/shopping-list', 'ShoppingListController::index');
-$routes->get('/shopping-list/create', 'ShoppingListController::create');
-$routes->get('/shopping-list/edit/(:num)', 'ShoppingListController::edit/$1');
-$routes->get('/shopping-list/delete/(:num)', 'ShoppingListController::delete/$1');
-$routes->post('/shopping-list/store', 'ShoppingListController::store');
+
 
 $routes->get('/items', 'ItemController::index');
 $routes->get('/items/create', 'ItemController::create');
 $routes->post('/items/store', 'ItemController::store');
+
+$routes->group('shopping-list', ['namespace' => 'App\Controllers'], function ($routes) {
+  $routes->get('/', 'ShoppingListController::index');
+  $routes->get('create', 'ShoppingListController::create');
+  $routes->get('edit/(:num)', 'ShoppingListController::edit/$1');
+  $routes->get('delete/(:num)', 'ShoppingListController::delete/$1');
+  $routes->post('store', 'ShoppingListController::store');
+
+});
+
+$routes->group('users', ['namespace' => 'App\Controllers'], function ($routes) {
+  $routes->get('/', 'UsersController::index');
+  $routes->get('edit/(:num)', 'UsersController::edit/$1');
+  $routes->post('update/(:num)', 'UsersController::update/$1');
+  $routes->get('create', 'UsersController::create');
+  $routes->post('store', 'UsersController::store');
+});
 
 
 /*

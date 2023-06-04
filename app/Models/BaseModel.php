@@ -12,4 +12,5 @@ class BaseModel extends Model
     protected $deletedField  = 'deleted_at';
 
     protected $returnType = 'array';
+    protected $skipValidation     = false;
 }

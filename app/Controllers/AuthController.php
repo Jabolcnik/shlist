@@ -3,7 +3,7 @@
 use App\Models\UserModel;
 use CodeIgniter\Controller;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
     public function __construct()
     {

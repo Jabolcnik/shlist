@@ -15,12 +15,18 @@
     </a>
     <div class="collapse navbar-collapse justify-content-center mt-1" id="navbarNav">
         <ul class="navbar-nav mt-1">
-            <li class="nav-item">
-                <a class="nav-link" href="/shopping-list">Shopping List</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
-            </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/shopping-list">Shopping List</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/users">Users</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+          </li>
         </ul>
     </div>
 </nav>
