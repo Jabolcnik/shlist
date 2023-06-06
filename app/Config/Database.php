@@ -52,9 +52,9 @@ class Database extends Config
 
     public $default = [
       'DSN'      => '',
-      'hostname' => '192.168.186.141',
+      'hostname' => 'host',
       'username' => 'api_shlist',
-      'password' => '234434"#$#"$br3234DF',
+      'password' => '',
       'database' => 'shlist',
       'DBDriver' => 'Postgre',
       'DBPrefix' => '',
