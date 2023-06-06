@@ -98,33 +98,25 @@ class UsersController extends AuthController
         $user = [
             'email' => $this->request->getVar('email'),
             'username' => $this->request->getVar('username'),
-            'password' => $this->request->getVar('password')
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
         ];
-        $data = [
-          'email' => $this->request->getVar('email'),
-          'username' => $this->request->getVar('username'),
-          'password' => $this->request->getVar('password'),
-          'confirm_password' => $this->request->getVar('confirm_password'),
-        ];
-
-        // Additional validation
-        $validationRules = [
-          'email' => 'required|valid_email',
-          'username' => 'required',
-          'password' => 'required',
-          'confirm_password' => 'required|matches[password]',
-        ];
-         
-
-        // TODO: find out why unknown function validateData ?!?
-        // if (!$this->validateData($data, $validationRules)) {
-        //   // return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-        //   return redirect()->back()->withInput();
-        // }
+    
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'email' => 'required|valid_email',
+            'username' => 'required',
+            'password' => 'required',
+            'confirm_password' => 'required|matches[password]',
+        ]);
+    
+        if (!$validation->run($user)) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        }
     
         $userModel->insert($user);
     
         return redirect()->to('/users');
     }
+    
     
 }

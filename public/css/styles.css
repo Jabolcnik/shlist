@@ -5,3 +5,9 @@
 .navbar-custom .navbar-nav .nav-link {
   color: white;
 }
+
+body {
+  /* background-image: url('../assets/torbjorn-helgesen-C4FbCe4L_pw-unsplash.jpg'); */
+  /* background-repeat: no-repeat;
+  background-size: cover; */
+}

@@ -35,14 +35,15 @@ $routes->get('/', 'DashboardController::index');
 
 $routes->get('/dashboard', 'DashboardController::index');
 $routes->get('/login', 'AuthController::showLoginForm');
-$routes->post('/auth/login', 'UserController::login');
-$routes->get('/logout', 'UserController::logout');
-
-
+$routes->post('/auth/login', 'UsersController::login');
+$routes->get('logout', 'UsersController::logout');
 
 $routes->get('/items', 'ItemController::index');
 $routes->get('/items/create', 'ItemController::create');
 $routes->post('/items/store', 'ItemController::store');
+$routes->post('/items/filterItems', 'ItemController::filterItems');
+$routes->post('/items/clearFilter', 'ItemController::clearFilter');
+
 
 $routes->group('shopping-list', ['namespace' => 'App\Controllers'], function ($routes) {
   $routes->get('/', 'ShoppingListController::index');
@@ -50,7 +51,6 @@ $routes->group('shopping-list', ['namespace' => 'App\Controllers'], function ($r
   $routes->get('edit/(:num)', 'ShoppingListController::edit/$1');
   $routes->get('delete/(:num)', 'ShoppingListController::delete/$1');
   $routes->post('store', 'ShoppingListController::store');
-
 });
 
 $routes->group('users', ['namespace' => 'App\Controllers'], function ($routes) {
@@ -59,6 +59,7 @@ $routes->group('users', ['namespace' => 'App\Controllers'], function ($routes) {
   $routes->post('update/(:num)', 'UsersController::update/$1');
   $routes->get('create', 'UsersController::create');
   $routes->post('store', 'UsersController::store');
+
 });
 
 

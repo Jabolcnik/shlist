@@ -37,7 +37,7 @@
             </div>
         <?php endforeach; ?>
     </div>
-    <a href="/shopping-list/create" class="btn btn-primary">Add</a>
+    <a href="/shopping-list/create" class="btn btn-success">Add</a>
 </div>
 
 

@@ -43,4 +43,32 @@ class ItemController extends AuthController
         return redirect()->to("/items?ListId={$data['shopping_list_id']}");
     }
 
+    public function filterItems()
+    {
+        $listId = $this->request->getPost('listId');
+
+        $itemModel = new ItemModel();
+        $items = $itemModel->getAllNotDeletedItems($listId);
+
+        // Prepare the response
+        $response = [
+            'items' => $items,
+        ];
+
+        return $this->response->setJSON($response);
+    }
+
+    public function clearFilter()
+    {
+        $itemModel = new ItemModel();
+        $items = $itemModel->getAllNotDeletedItems();
+
+        // Prepare the response
+        $response = [
+            'items' => $items,
+        ];
+
+        return $this->response->setJSON($response);
+    }
+
 }
